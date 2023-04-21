@@ -1,14 +1,21 @@
 package com.example.exeption.user;
 
 import com.example.exeption.permission.Authorities;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 
 import java.util.List;
 import java.util.Objects;
 
 public class User {
-    private String name;
-    private String password;
     private final List<Authorities> permission = List.of(Authorities.values());
+    @NotBlank
+    @Size(min = 2, max = 20)
+    private String name;
+    @NotBlank
+    @Size(min = 2, max = 20)
+    private String password;
 
     public User() {
     }

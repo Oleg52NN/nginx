@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class UserRepository {
     private final ConcurrentHashMap<String, User> userMap = new ConcurrentHashMap<>();
 
-    public List<Authorities> getUserAuthorities(String user, String password) {
+    public List<Authorities> getUserAuthorities(User user) {
         setUser();
-        if (userMap.containsKey(password)) {
-            if (userMap.get(password).getName().equals(user)) {
-                return userMap.get(password).getPermission();
+        if (userMap.containsKey(user.getPassword())) {
+            if (userMap.get(user.getPassword()).getName().equals(user.getName())) {
+                return userMap.get(user.getPassword()).getPermission();
             }
         }
         return null;
